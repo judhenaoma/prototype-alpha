@@ -1,0 +1,23 @@
+
+.interface_default {
+    position: absolute;
+	text-align: center;
+	display: none;
+	width: fit-content;
+    background-color: white;
+    padding: 50px;
+    border: 1px solid black;
+
+}
+
+.process{
+    cursor: pointer;
+}
+
+
+form.modal{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+	align-items: center;
+
+}
