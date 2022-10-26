@@ -1,23 +1,114 @@
-
-.interface_default {
-    position: absolute;
-	text-align: center;
-	display: none;
-	width: fit-content;
-    background-color: white;
-    padding: 50px;
-    border: 1px solid black;
-
+/* Global style settings */
+* {
+    box-sizing:border-box;
 }
 
-.process{
+input[type=text] {
+    width: 90%;
+   
+}
+
+ul {
+    list-style-type: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 100%;
+}
+
+label{
+    font-weight: bold;
+}
+
+.use_case_settings{
     cursor: pointer;
 }
 
+.modal_title{
+    cursor: move; 
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
 
-form.modal{
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-	align-items: center;
 
+.modal_settings {
+    position: absolute;
+	text-align: center;
+	display: none;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 400px;
+    height: auto;
+    box-shadow: 8px 8px 8px 4px rgba(0, 0, 0, 0.8);
+}
+
+
+.modal_title{
+    position: relative;
+    top: -21px;
+    width: 100%;
+    height: auto;
+    background-color: black;
+    color: white;
+}
+/* avoid to select text */
+.no_select {
+    -webkit-touch-callout: none;
+      -webkit-user-select: none; 
+       -khtml-user-select: none; 
+         -moz-user-select: none;
+          -ms-user-select: none; 
+              user-select: none; 
+  }
+
+
+.modal_content{
+    width: 300px;
+    height: auto;
+    margin: 0px auto 0px auto;
+
+}
+
+.form_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_settings{
+    line-height: 27px;
+}
+
+.form_buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-button{
+    background-color: black;
+    color: white;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.line{
+    height: 120px;
+    border: 1px solid gray;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text_box{
+    width: 340px;
+    height: 100px;
 }

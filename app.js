@@ -1,33 +1,136 @@
+//Modal handling
+let modalContainer = document.querySelector("#modal_container");
+let modalContent = modalContainer.querySelector("#modal_content");
+let modalTitle = modalContainer.querySelector("#modal_title");
+ 
 
 
 
-const showInterface = (e, interface) => {
+//**FUNCTIONS
 
-    interface.style.display = "block";
-    interface.style.top = e.clientY + "px";
-    interface.style.left = e.clientX + "px";
+//Show modal of a dynamic triad
+const showModal = (e, modal) => {
+
+    modal.style.display = "block";
+    const xScroll = window.scrollX
+    const yScroll = window.scrollY
+    modal.style.top = e.clientY + yScroll  + "px";
+    modal.style.left = e.clientX + xScroll + "px";
+}
+
+//Hiden modal of a dynamic triad
+
+const closeModal = (e) => {
+    e.preventDefault();
+    const modal = e.target.closest(".modal_settings")
+    modal.style.display = "none"
+}
+
+
+const saveData = (e) => {
+    e.preventDefault();
+    const modal = e.target.closest(".modal_settings")
+    modal.style.display = "none"
+    alert("Data saved")
+}
+
+//Drag modals
+
+const dragModal = (e) => {
+    e.preventDefault();
+    const modalStyles = window.getComputedStyle(modalContainer);
+    const modalLeftPosition = parseInt(modalStyles.left);
+    const modalTopPosition = parseInt(modalStyles.top);
+    modalContainer.style.left = modalLeftPosition + e.movementX + "px";
+    modalContainer.style.top = modalTopPosition + e.movementY + "px";
+    
+}
+
+modalTitle.addEventListener("mousedown", (e)=>{
+
+    modalTitle.addEventListener("mousemove", dragModal)
+
+}) 
+document.addEventListener("mouseup", (e) => {
+    modalTitle.removeEventListener("mousemove", dragModal)
+
+});
+
+const handleFormSubmit = (e, id) =>{
+    alert("Datos guardados")
 
 }
 
 
-const process1 = document.querySelector("#process_1");
-const interface1 = document.querySelector("#interface_uses_case_1");
-const contentInterface1 = document.querySelector("#content_uc_1");
 
+
+
+
+// Catching selectors of dynamic triads in the pre-conceptual schema
+const process1 = document.querySelector("#use_case_01");
+const process2 = document.querySelector("#use_case_02");
+
+//Events
 process1.addEventListener("click", (e)=> {
-    console.log("Dando click")
+    e.preventDefault();
+    showModal(e, modalContainer);
 
-    showInterface(e, interface1);
-    contentInterface1.innerHTML = `
-        <form class="modal">
-            <label> Role </label>
-            <input type="text">
-            <label> Action </label>
-            <input type="text">
-            <label> Language </label>
-            <input type="text">
-            <label> Reason </label>
-            <input type="text">
-        </form>
+    modalTitle.innerHTML = `<h1 class="no_select">Developer Leader Defines User Story</h1>`
+    modalContent.innerHTML = `
+        <div class="form_container">
+            <form id="form_use_case_01" onsubmit="handleFormSubmit(event, id)" class="form_settings">
+                <label for="role_1"> Role </label>
+                <input id="role_1" name="role_1" type="text"/>
+                <label for="action_1"> Action </label>
+                <input id="action_1" name="action_1" type="text"/>
+                <label for="language_1"> Language </label>
+                <input id="language_1" name="language_1" type="text"/>
+                <label for="reason_1"> Reason </label>
+                <input id="reason_1" name="reason_1" type="text"/>
+                <ul class="form_buttons">
+                    <li>
+                        <button type="submit" onclick="saveData(event)" class="close_modal form-button">Save</button>
+                    </li>
+                    <li>
+                        <button onclick="closeModal(event)" class="close_modal form-button">Cancel</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    `
+})
+
+
+
+
+
+process2.addEventListener("click", (e)=> {
+    e.preventDefault();
+    showModal(e, modalContainer);
+
+    modalTitle.innerHTML = `<h1 class="no_select">Product Owner Validates User Story</h1>`
+    modalContent.innerHTML = `
+        <div class="form_container">
+            <form class="form_settings">
+               
+                <div class="line">
+                    <textarea class="text_box">
+                    </textarea>
+                    <button>Reject</button>
+                    <button>Reject</button>
+                </div>
+                
+            
+            
+                <ul class="form_buttons">
+                    <li>
+                        <button onclick="closeModal(event)" class="close_modal form-button">Save</button>
+                    </li>
+                    <li>
+                        <button onclick="closeModal(event)" class="close_modal form-button">Cancel</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
     `
 })
