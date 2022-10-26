@@ -70,13 +70,61 @@ const handleFormSubmit = (e, id) =>{
 const process1 = document.querySelector("#use_case_01");
 const process2 = document.querySelector("#use_case_02");
 const process3 = document.querySelector("#use_case_03");
-
+const process5 = document.querySelector("#use_case_04");
+const process6 = document.querySelector("#use_case_06");
 //Events
+process6.addEventListener("click", (e)=> {
+    e.preventDefault();
+    showModal(e, modalContainer);
+    modalTitle.innerHTML = `<h1 class="no_select">Product Owner Guides Developer</h1>`
+    modalContent.innerHTML = `
+        <div class="form_container">
+            <form class="form_settings">
+                <h3 >Write your suggestion</h3>
+                <p>
+                <textarea name="comentario"  rows="20" cols="30"></textarea></p>
+                <ul class="form_buttons">
+                <li>
+                <button type="submit" onclick="saveData(event)" class="close_modal form-button">Save</button>
+            </li>
+            <li>
+                <button onclick="closeModal(event)" class="close_modal form-button">Cancel</button>
+            </li>
+                </ul>
+            </form>
+        </div>
+    `
+})
+process5.addEventListener("click", (e)=> {
+    e.preventDefault();
+    showModal(e, modalContainer);
+    modalTitle.innerHTML = `<h1 class="no_select">Product Owner Approves Software System</h1>`
+    modalContent.innerHTML = `
+        <div class="form_container">
+            <form class="form_settings">
+                <h1 >Do you Approve the software system?</h1>
+                <p>
+                    <input type="radio" name="yes_no" checked>Yes</input>
+                </p>
+                <p >
+                    <input  type="radio" name="yes_no">No</input>
+                </p>
+                <ul class="form_buttons">
+                    <li>
+                        <button onclick="closeModal(event)" class="close_modal form-button">Close</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    `
+})
+
+
 process1.addEventListener("click", (e)=> {
     e.preventDefault();
     showModal(e, modalContainer);
 
-    modalTitle.innerHTML = `<h1 class="no_select">Developer Leader Defines User Story</h1>`
+    modalTitle.innerHTML = `<h1 class="no_select">Development Leader Defines User Story</h1>`
     modalContent.innerHTML = `
         <div class="form_container">
             <form id="form_use_case_01" onsubmit="handleFormSubmit(event, id)" class="form_settings">
