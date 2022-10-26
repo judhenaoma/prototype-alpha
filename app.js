@@ -69,6 +69,7 @@ const handleFormSubmit = (e, id) =>{
 // Catching selectors of dynamic triads in the pre-conceptual schema
 const process1 = document.querySelector("#use_case_01");
 const process2 = document.querySelector("#use_case_02");
+const process3 = document.querySelector("#use_case_03");
 
 //Events
 process1.addEventListener("click", (e)=> {
@@ -103,34 +104,59 @@ process1.addEventListener("click", (e)=> {
 
 
 
-
 process2.addEventListener("click", (e)=> {
     e.preventDefault();
     showModal(e, modalContainer);
-
     modalTitle.innerHTML = `<h1 class="no_select">Product Owner Validates User Story</h1>`
     modalContent.innerHTML = `
         <div class="form_container">
             <form class="form_settings">
-               
                 <div class="line">
-                    <textarea class="text_box">
-                    </textarea>
-                    <button>Reject</button>
-                    <button>Reject</button>
+                    <span id="text_box" class="text_box">US1</span>
                 </div>
-                
-            
-            
                 <ul class="form_buttons">
                     <li>
-                        <button onclick="closeModal(event)" class="close_modal form-button">Save</button>
-                    </li>
-                    <li>
-                        <button onclick="closeModal(event)" class="close_modal form-button">Cancel</button>
+                        <button onclick="closeModal(event)" class="close_modal form-button">Close</button>
                     </li>
                 </ul>
             </form>
         </div>
     `
 })
+
+
+
+
+process3.addEventListener("click", (e)=> {
+    e.preventDefault();
+    showModal(e, modalContainer);
+    modalTitle.innerHTML = `<h1 class="no_select">Product Owner Validates User Story</h1>`
+    modalContent.innerHTML = `
+        <div class="form_container">
+            <form class="form_settings">
+                <div class="line">
+                    <div class="text_box">US1</div>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <ul class="form_buttons">
+                    <li>
+                        <button onclick="closeModal(event)" class="close_modal form-button">Close</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    `
+});
+
+
+
+// const textBox = document.querySelector("span#text_box")
+// console.log(textBox)
+// textBox.addEventListener('click', (e)=>{
+//     console.log(e.target)
+//     showModal(e, auxiliar_modal);
+
+// })
